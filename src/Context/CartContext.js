@@ -20,6 +20,30 @@ const CartProvider = ({children}) => {
    * 11. Create a variable called values that will hold an object with the items, setItems, addToCart, and removeFromCart functions
    * 12. Return the CartContext.Provider and pass in the values variable
    */
+  const [items,setItems] = useState(defaultCart);
+
+  useEffect(()=>{
+    localStorage.setItem('data', JSON.stringify(items));
+  },[items]);
+
+  let addToCart = (data,findCartItem) =>{
+      if(!findCartItem)
+      {
+        return setItems(prevItems => [data, ...prevItems])
+      }
+      if(findCartItem)
+      {
+        let filtered = items.filter(item => item.id !== findCartItem.id);
+        return setItems(filtered);
+      }
+  }
+
+  let removeFromCart = (item_id)=>{
+    let filtered = items.filter(item => item.id !== item_id);
+    return setItems(filtered);
+  }
+
+  let values = {items, setItems, addToCart, removeFromCart}
 
   return <CartContext.Provider value={values}>{children}</CartContext.Provider>
 }

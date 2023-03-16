@@ -7,13 +7,13 @@ import styles from "./styles.module.css";
 const Cart = () => {
   const { items, removeFromCart } = useCart();
 
-  const subtotal = items.reduce((acc, obj) => acc + obj.price, 0).toFixed(1)
+  const subtotal = items.reduce((acc, obj) => acc + obj.price, 0).toFixed(1);
 
   return (
     <div>
       {items.length < 1 && (
         <div className="flex flex-wrap max-w-7xl mx-auto my-4">
-        <div className="w-full sm:w-2/2 md:w-2/2 xl:w-5/5 p-4 h-[500px] my-auto">
+          <div className="w-full sm:w-2/2 md:w-2/2 xl:w-5/5 p-4 h-[500px] my-auto">
             <div className={styles.cardBg}>
               <ShoppingCartIcon className="h-40 w-40 mx-auto mt-10 text-slate-700" />
               <p className="text-xl text-black font-extralight tracking-widest text-center pt-6">
@@ -37,7 +37,31 @@ const Cart = () => {
           </div>
         </div>
       )}
-      // Your code goes here
+      {items.length > 0 && (
+        <div className="max-w-7xl mx-auto p-4">
+          <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
+          <div className="grid grid-cols-3 gap-4">
+            {items.map((item) => (
+              <div key={item.id} className={styles.cartItem}>
+                <img className={styles.itemImage} src={item.image} alt={item.title} />
+                <div className={styles.itemDetails}>
+                  <p className="text-lg font-medium">{item.title}</p>
+                  <p className="text-gray-500 text-sm">{item.description}</p>
+                  <p className="text-gray-500 text-sm">Price: ${item.price}</p>
+                  <button className={styles.removeButton} onClick={() => removeFromCart(item.id)}>
+                    <TrashIcon className="h-4 w-4 mr-1" />
+                    Remove
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-end mt-4">
+            <p className="text-gray-500 text-sm mr-4">Subtotal: ${subtotal}</p>
+            <button className={styles.checkoutButton}>Proceed to Checkout</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

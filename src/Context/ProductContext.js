@@ -6,7 +6,7 @@ const ProductContext = createContext()
 export const ProductProvider = ({ children }) => {
   const [productList, setProductList] = useState([])
   const [categories, setCategories] = useState()
-  const [category, setCategory] = useState("/products")
+  const [category, setCategory] = useState("products")
   const [productID, setProductID] = useState("")
   const [product, setProduct] = useState({})
   const [loading, setLoading] = useState(false)
