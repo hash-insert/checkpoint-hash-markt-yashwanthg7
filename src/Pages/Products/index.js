@@ -29,11 +29,12 @@ const Products = () => {
       {!loading ? (
         productList.map((product) => {
           const findCartItem = items.find((item) => item.id === product.id)
+          const findFavoriteItem = favoriteItems.find((item) => item.id === product.id)
           return (
             <Card
               item={product}
               addToFavorite={ addToFavorite}
-              findFavoriteItem={ favoriteItems}
+              findFavoriteItem={ findFavoriteItem}
               addToCart={addToCart }
               findCartItem={findCartItem}
             />

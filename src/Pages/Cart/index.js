@@ -3,9 +3,12 @@ import { ShoppingCartIcon, TrashIcon } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 import { useCart } from "../../Context/CartContext";
 import styles from "./styles.module.css";
+import { useFavorite } from '../../Context/FavoriteContext'
+import Card2 from '../../Components/Card/index2';
 
 const Cart = () => {
-  const { items, removeFromCart } = useCart();
+  const { items, removeFromCart,addToCart } = useCart();
+  const { addToFavorite, favoriteItems } = useFavorite()
 
   const subtotal = items.reduce((acc, obj) => acc + obj.price, 0).toFixed(1);
 
@@ -37,22 +40,18 @@ const Cart = () => {
           </div>
         </div>
       )}
+
       {items.length > 0 && (
-        <div className="max-w-7xl mx-auto p-4">
-          <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
-          <div className="grid grid-cols-3 gap-4">
+        <div >
+          <div >
             {items.map((item) => (
-              <div key={item.id} className={styles.cartItem}>
-                <img className={styles.itemImage} src={item.image} alt={item.title} />
-                <div className={styles.itemDetails}>
-                  <p className="text-lg font-medium">{item.title}</p>
-                  <p className="text-gray-500 text-sm">{item.description}</p>
-                  <p className="text-gray-500 text-sm">Price: ${item.price}</p>
-                  <button className={styles.removeButton} onClick={() => removeFromCart(item.id)}>
-                    <TrashIcon className="h-4 w-4 mr-1" />
-                    Remove
-                  </button>
-                </div>
+              <div key={item.id} >
+                <Card2
+                  item={item}
+                  addToFavorite={addToFavorite}
+                  isFavorite={favoriteItems.some((favItem) => favItem.id === item.id)}
+                  isAddedToCart={items.some((cartItem) => cartItem.id === item.id)}
+                />
               </div>
             ))}
           </div>
