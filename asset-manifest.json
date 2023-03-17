@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/checkpoint-hash-markt-yashwanthg7/static/css/main.0e866bc8.css",
-    "main.js": "/checkpoint-hash-markt-yashwanthg7/static/js/main.f02dc570.js",
+    "main.css": "/checkpoint-hash-markt-yashwanthg7/static/css/main.da9cf004.css",
+    "main.js": "/checkpoint-hash-markt-yashwanthg7/static/js/main.13b31a6c.js",
     "index.html": "/checkpoint-hash-markt-yashwanthg7/index.html",
-    "main.0e866bc8.css.map": "/checkpoint-hash-markt-yashwanthg7/static/css/main.0e866bc8.css.map",
-    "main.f02dc570.js.map": "/checkpoint-hash-markt-yashwanthg7/static/js/main.f02dc570.js.map"
+    "main.da9cf004.css.map": "/checkpoint-hash-markt-yashwanthg7/static/css/main.da9cf004.css.map",
+    "main.13b31a6c.js.map": "/checkpoint-hash-markt-yashwanthg7/static/js/main.13b31a6c.js.map"
   },
   "entrypoints": [
-    "static/css/main.0e866bc8.css",
-    "static/js/main.f02dc570.js"
+    "static/css/main.da9cf004.css",
+    "static/js/main.13b31a6c.js"
   ]
 }
