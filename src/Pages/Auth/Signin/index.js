@@ -2,6 +2,67 @@ import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../Context/AuthContext'
 import { LoginIcon } from '@heroicons/react/outline'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  max-width: 450px;
+  height: 400px;
+  margin: auto;
+  border: 2px solid #fccf03;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 20px;
+`;
+
+const StyledButton = styled.button`
+  background-color: #fccf03;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  cursor: pointer;
+  width: 100%;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+`;
+
+const Heading = styled.h1`
+font-size: 50px;
+margin-top: 30px;
+padding: 0px 60px;
+justify-content: center;
+`
+
+const StyledForm = styled.form`
+  /* margin-top: 20px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
+const StyledInput = styled.input`
+   margin-top: 20px;
+   width: 100%;
+   height: 35px;
+   border-radius: 5px;
+   padding:10px;
+   color:black;
+`
+const Styleddiv = styled.div`
+  margin-top: 15px;
+  span{
+    display: flex;
+    flex-direction: row;
+  }
+  p{
+    color: #fccf03;
+    padding-left: 5px;
+  }
+`
 
 const Signin = () => {
 
@@ -25,25 +86,26 @@ const Signin = () => {
   }
 
   const navigate = useNavigate()
-  
+
   useEffect(() => {
     loggedIn && navigate('/')
   }, [loggedIn])
 
+
+
   return (
-    <div>
+    <Container>
       <div>
         <div>
-          <h2>Login</h2>
+          <Heading>Login</Heading>
         </div>
-        <form
+        <StyledForm
           autoComplete="off"
           onSubmit={handleSignIn}
         >
           <div>
             <div>
-              <label>Email</label>
-              <input
+              <StyledInput
                 type="email"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
@@ -53,8 +115,7 @@ const Signin = () => {
               />
             </div>
             <div>
-              <label>Password</label>
-              <input
+              <StyledInput
                 type="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
@@ -64,26 +125,26 @@ const Signin = () => {
               />
             </div>
             <div>
-              <div>
+              <Styleddiv>
                 <span>
                   Don't have an account? Sign up{" "}
                   <Link to="/signup">
-                    {" "}
-                    here.
+                    
+                    <p>{" "} here</p>
                   </Link>
                 </span>
-              </div>
+              </Styleddiv>
             </div>
             <div>
-              <button type="submit">
-                <LoginIcon aria1-hidden="true" />
+              <StyledButton type="submit">
+                <LoginIcon aria1-hidden="true"  className="h-6 w-6" />
                 Login
-              </button>
+              </StyledButton>
             </div>
           </div>
-        </form>
+        </StyledForm>
       </div>
-    </div>
+    </Container>
   )
 }
 
