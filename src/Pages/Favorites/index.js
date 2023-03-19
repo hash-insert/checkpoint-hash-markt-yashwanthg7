@@ -4,7 +4,7 @@ import { HeartIcon } from '@heroicons/react/outline'
 import styles from './styles.module.css'
 import { useFavorite } from '../../Context/FavoriteContext'
 import { useCart } from '../../Context/CartContext'
-import Card from '../../Components/Card'
+import Card3 from '../../Components/Card/index3';
 
 const Favorites = () => {
   const { favoriteItems, addToFavorite } = useFavorite()
@@ -38,9 +38,22 @@ const Favorites = () => {
           </div>
         </div>
       )}
-      /**
-        * Your code goes here
-       */
+
+      {favoriteItems.length > 0 && (
+        <div  >
+          {favoriteItems.map((item) => (
+            <div key={item.id} >
+              <Card3
+                item={item}
+                addToCart={addToCart}
+                addToFavorite={addToFavorite}
+                isFavorite={favoriteItems.some((favItem) => favItem.id === item.id)}
+                isAddedToCart={items.some((cartItem) => cartItem.id === item.id)}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

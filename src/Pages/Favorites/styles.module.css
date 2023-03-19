@@ -1,9 +1,9 @@
 .cardGroup {
   @apply
   flex 
-  flex-wrap 
-  max-w-7xl 
-  mx-auto 
+  flex-wrap
+  max-w-7xl
+  mx-auto
   my-4
 }
 
